@@ -2,7 +2,9 @@ package com.mtprojetos.gerenciador_evento.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,6 +24,9 @@ public class Atividade {
 
     @OneToMany(mappedBy = "atividade")
     private Set<Bloco> blocos = new HashSet<>();
+
+    @ManyToMany(mappedBy = "atividades")
+    private List<Participante> participantes = new ArrayList<>();
 
     public Atividade(){};
 
@@ -71,5 +76,9 @@ public class Atividade {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public List<Participante> getParticipantes() {
+        return participantes;
     }
 }
