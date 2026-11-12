@@ -2,10 +2,7 @@ package com.mtprojetos.gerenciador_evento.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_participante")
@@ -58,4 +55,17 @@ public class Participante {
     public List<Atividade> getAtividades() {
         return atividades;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Participante that = (Participante) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
 }
